@@ -8,7 +8,8 @@ person.firstName = 'John';
 person.lastName = 'Smith';
 person.age = 29;
 person.getInfo = function () {
-	return `Name: ${this.lastName}, ${this.firstName} age: ${this.age}`;
+	// you can call the propertires using the obj name, doesn't work where you're using anonymous functions
+	return `Name: ${person.lastName}, ${this.firstName} age: ${this.age}`;
 };
 
 //using object literals
@@ -17,7 +18,7 @@ let person2 = {
 	lastName: 'Jones',
 	age: 22,
 	getInfo: function () {
-		return `Name: ${this.lastName}, ${this.firstName} age: ${this.age}`;
+		return `Name: ${person2.lastName}, ${this.firstName} age: ${this.age}`;
 	}
 	
 };
