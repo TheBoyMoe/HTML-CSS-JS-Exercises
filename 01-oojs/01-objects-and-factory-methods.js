@@ -21,3 +21,18 @@ let person2 = {
 	}
 	
 };
+
+// two types of function that can be used in js to return objs, constructor and factor functions
+
+// factory function
+let  createPerson = function (firstName, lastname, age) {
+	return {
+		firstName: firstName,
+		lastname: lastname,
+		age: age,
+		getInfo: function () {
+			return `Name: ${lastname}, ${firstName} age: ${age}`;
+		}
+	}
+};
+
