@@ -21,18 +21,28 @@ let createPerson = function (firstName, lastName, age) {
 	
 	// OR define multiple properties at once
 	Object.defineProperties(person, {
+		// data properties
 		firstName: {
 			value: firstName,
 			writable: true
 		},
 		lastName: {
-			value: lastName
+			value: lastName,
+			writable: true
 		},
 		age: {
 			value: age
+		},
+		// accessor properties
+		detail: {
+			get: function () {
+				return `Name: ${this.lastName}, ${this.firstName} age: ${this.age}`
+			},
+			set: function (value) {
+				this.firstName = value;
+			}
 		}
 	});
-	
 	
 	return person;
 };
