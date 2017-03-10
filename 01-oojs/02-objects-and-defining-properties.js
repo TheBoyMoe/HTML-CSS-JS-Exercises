@@ -21,17 +21,20 @@ let createPerson = function (firstName, lastName, age) {
 	
 	// OR define multiple properties at once
 	Object.defineProperties(person, {
-		// data properties
+		// data properties - by default properties are not enumerable unless specified
 		firstName: {
 			value: firstName,
-			writable: true
+			writable: true,
+			enumerable: true
 		},
 		lastName: {
 			value: lastName,
-			writable: true
+			writable: true,
+			enumerable: true
 		},
 		age: {
-			value: age
+			value: age,
+			enumerable: true
 		},
 		// accessor properties
 		detail: {
@@ -46,4 +49,14 @@ let createPerson = function (firstName, lastName, age) {
 	
 	return person;
 };
+
+// to return an object's enumerable properties use:
+
+// Object.keys()) - passing in the obj of interest
+ 
+ // OR iterate through the objs enumerable properties with a for/in loop
+
+// for(let p in [obj of interest]) {
+// 	console.log(p);
+// }
 
