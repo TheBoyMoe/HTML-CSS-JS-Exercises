@@ -12,10 +12,21 @@ let Person = function (name, yob, job) {
 	this.name = name;
 	this.yob = yob;
 	this.job = job;
-	// this.calculateAge = function (year) {
-	// 	console.log(`Age ${year - this.yob}`);
-	// }
 };
+
+// function constructor containing obj methods
+let Employee = function (id, department, role) {
+	this.id = id;
+	this.department = department;
+	this.role = role;
+	this.getId = function () {
+		return `Id ${this.id}`;
+	};
+	this.getDepartment = function () {
+		return `Department: ${this.department}`;
+	}
+};
+
 
 /* Instantiate the obj using the new keyword
 	1. an empty obj is 1st created,
@@ -28,7 +39,7 @@ let mike = new Person('John Smith', 1990, 'teacher');
 let jane = new Person('Jane Smith', 1995, 'designer');
 let ralph = new Person('Ralph Smith', 1948, 'retired');
 
-/* Instead of adding functions directly to the obj constructor, as in the calculateAge example
+/* Instead of adding functions directly to the obj constructor, as in the employee example
    add them to the objs prototype - the objs no longer have the functions 'within' them - are
    instead inherited by all instances of that obj from their prototype
    
@@ -38,7 +49,7 @@ let ralph = new Person('Ralph Smith', 1948, 'retired');
 
 Person.prototype.calculateAge = function () {
 	let year = new Date().getFullYear();
-	 return `Age ${year - this.yob}`;
+	return `Age ${year - this.yob}`;
 };
 
 Person.prototype.getName = function () {
