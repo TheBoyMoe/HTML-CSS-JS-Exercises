@@ -29,12 +29,29 @@ let peter = {
 	job: 'Teacher'
 };
 
-john.presentation('informal', 'Afternoon');
+let adam = {
+	name: 'Adam Smith',
+	age: 68,
+	job: 'Retired Economist'
+};
+
+// john.presentation('informal', 'Afternoon');
 
 // Using call() to borrow methods - first parameter is the obj that you want to bind 'this' to
-// use the call method to set the 'this' variable
-john.presentation.call(emily, 'formal', 'Morning');
+// use the call method to explicitly set the 'this' variable
+// john.presentation.call(emily, 'formal', 'Morning');
 
 
 // Using the apply() method to borrow methods - similar to call() except you pass the args as an array
-john.presentation.apply(peter, ['informal', 'Evening']);
+// john.presentation.apply(peter, ['informal', 'Evening']);
+
+
+// Using the bind() method to borrow methods - similar to call, except it doesn't immediately call
+// the function, instead it creates a copy that can be stored and called later
+//  return a function object with preset args
+let fn = john.presentation.bind(adam, 'informal', 'morning');
+fn();
+// - you DON'T have to pass in all the args at once - you normally DONT
+// - called CURRYING - create a function based on another function, but with some preset parameters set
+let fn2 = john.presentation.bind(john, 'formal');
+fn2('evening');
