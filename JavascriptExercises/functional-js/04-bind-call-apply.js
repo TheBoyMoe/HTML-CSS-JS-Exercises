@@ -55,3 +55,32 @@ fn();
 // - called CURRYING - create a function based on another function, but with some preset parameters set
 let fn2 = john.presentation.bind(john, 'formal');
 fn2('evening');
+
+
+let dobs = [1998, 1965, 1937, 1985, 2000];
+function arrayCalc(arr, fn) {
+	// let result = [];
+	// arr.forEach(function (val) {
+	// 	result.push(fn(val));
+	// });
+	// return result;
+	
+	return arr.map(function (val) {
+		return fn(val);
+	})
+}
+
+function calculateAge(val) {
+	return 2016 - val;
+}
+
+function isFullAge(limit, val) {
+	return val >= limit;
+}
+
+let ages = arrayCalc(dobs, calculateAge);
+
+// legal age in Japan 20
+let legalInJapan = arrayCalc(ages, isFullAge.bind(null, 20));
+console.log(ages);
+console.log(legalInJapan);
