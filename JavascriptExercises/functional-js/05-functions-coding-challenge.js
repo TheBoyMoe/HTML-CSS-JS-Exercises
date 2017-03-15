@@ -63,24 +63,55 @@
 	};
 	
 	// compare the user's answer with the correct answer
-	Question.prototype.checkAnswer = function (ans) {
+	Question.prototype.checkAnswer = function (ans, fn) {
+		let score = 0;
 		if(ans === this.answer){
 			console.log(`Correct answer!`);
+			score = fn(true); // updates the score ans returns it
 		} else {
 			console.log(`Wrong answer, try again`);
+			score = fn(false); // returns the current score
 		}
+		this.displayScore(score)
 	};
 	
-	let num = Math.floor(Math.random()*4);
+	// display the user's current score
+	Question.prototype.displayScore = function (score) {
+		console.log(`Your current score is: ${score}`);
+		console.log(`---------------------------------`);
+	};
 	
-	// display a random question to console log
-	questions[num].displayQuestion();
 	
-	// get an answer from the user
-	let answer = parseInt(prompt(`Select the correct answer, 0, 1, 2,etc`));
+	// use a closure to maintain a running score
+	function score() {
+		let sc = 0;
+		return function (correct) {
+			if(correct) sc++;
+			
+			return sc;
+		}
+	}
 	
-	// and check the answer
-	questions[num].checkAnswer(answer);
+	let keepScore = score();
+	
+	// continue presenting the user with a question until they type exit
+	function nextQuestion() {
+		let num = Math.floor(Math.random() * 4);
+		
+		// display a random question to console log
+		questions[num].displayQuestion();
+		
+		// get an answer from the user
+		let answer = prompt(`Select the correct answer, 0, 1, 2,etc`);
+		
+		if(answer !== 'exit') {
+			// and check the answer
+			questions[num].checkAnswer(parseInt(answer), keepScore);
+			nextQuestion();
+		}
+	}
+	
+	nextQuestion();
 	
 })();
 
