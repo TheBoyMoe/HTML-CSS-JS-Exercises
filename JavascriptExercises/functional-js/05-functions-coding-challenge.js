@@ -38,34 +38,51 @@
  11. Display the score in the console. Use yet another method for this.
  */
 
-let Question = function (question, possibles, answer) {
-	this.question = question;
-	this.possibles = possibles;
-	this.answer = answer;
-};
+// use the iife pattern to make the variables private
+(function(){
 
-let questions = [
-	new Question('How many legs does a spider have?', [2,4,6,8], 3),
-	new Question('What city is the capital of Italy?', ['London', 'Paris', 'Rome', 'Berlin', 'Moscow'], 2),
-	new Question('How many inches in a foot?', [8, 24, 14, 16, 18, 12], 5),
-	new Question('What is the retirement age in the UK?', [60, 62, 67, 65, 70, 75], 2)
-];
-
-// display the question with possible answers to the console
-Question.prototype.displayQuestion = function () {
-	console.log(this.question);
-	for(let i = 0; i < this.possibles.length; i++) {
-		console.log(`${i}: ${this.possibles[i]}`);
-	}
-};
-
-// display a random question to console log
-questions[Math.floor(Math.random()*4)].displayQuestion();
-
-
-
-
-
+	let Question = function (question, possibles, answer) {
+		this.question = question;
+		this.possibles = possibles;
+		this.answer = answer;
+	};
+	
+	let questions = [
+		new Question('How many legs does a spider have?', [2,4,6,8], 3),
+		new Question('What city is the capital of Italy?', ['London', 'Paris', 'Rome', 'Berlin', 'Moscow'], 2),
+		new Question('How many inches in a foot?', [8, 24, 14, 16, 18, 12], 5),
+		new Question('What is the retirement age in the UK?', [60, 62, 67, 65, 70, 75], 2)
+	];
+	
+	// display the question with possible answers to the console
+	Question.prototype.displayQuestion = function () {
+		console.log(this.question);
+		for(let i = 0; i < this.possibles.length; i++) {
+			console.log(`${i}: ${this.possibles[i]}`);
+		}
+	};
+	
+	// compare the user's answer with the correct answer
+	Question.prototype.checkAnswer = function (ans) {
+		if(ans === this.answer){
+			console.log(`Correct answer!`);
+		} else {
+			console.log(`Wrong answer, try again`);
+		}
+	};
+	
+	let num = Math.floor(Math.random()*4);
+	
+	// display a random question to console log
+	questions[num].displayQuestion();
+	
+	// get an answer from the user
+	let answer = parseInt(prompt(`Select the correct answer, 0, 1, 2,etc`));
+	
+	// and check the answer
+	questions[num].checkAnswer(answer);
+	
+})();
 
 
 
