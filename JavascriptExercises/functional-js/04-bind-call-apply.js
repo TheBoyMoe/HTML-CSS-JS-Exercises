@@ -23,9 +23,18 @@ let emily = {
 	job: 'Designer'
 };
 
+let peter = {
+	name: 'Peter Smith',
+	age: 48,
+	job: 'Teacher'
+};
+
 john.presentation('informal', 'Afternoon');
 
 // Using call() to borrow methods - first parameter is the obj that you want to bind 'this' to
+// use the call method to set the 'this' variable
 john.presentation.call(emily, 'formal', 'Morning');
 
 
+// Using the apply() method to borrow methods - similar to call() except you pass the args as an array
+john.presentation.apply(peter, ['informal', 'Evening']);
