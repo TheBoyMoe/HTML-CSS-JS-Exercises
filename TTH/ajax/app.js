@@ -13,8 +13,21 @@ document.addEventListener('DOMContentLoaded', function () {
 	// invoked when ever there is a change in the onReadyStateChange event
 	xhr.onreadystatechange = function () {
 		// we're only interested in the final state change, ready state == 4
+		// and everything is correct
 		if(xhr.readyState === 4) {
-			document.getElementById('ajax').innerHTML = xhr.responseText;
+			if(xhr.status === 200) {
+				document.getElementById('ajax').innerHTML = xhr.responseText;
+			}
+			// else if(xhr.readyState === 404) {
+			// 	// file not found
+			//
+			// } else if(xhr.readyState === 500) {
+			// 	// server error
+			//
+			// }
+			else {
+				console.log(xhr.response);
+			}
 		}
 	};
 	
