@@ -1,0 +1,14 @@
+{
+  "name": "ajax-json-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "theBoyMo",
+  "license": "MIT",
+  "devDependencies": {
+    "static-server": "^2.0.4"
+  }
+}
