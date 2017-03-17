@@ -1,0 +1,90 @@
+body {
+	background-color: #cccccc;
+}
+
+
+#container {
+	padding: 20px;
+	background-color: #fff;
+	margin: 40px 40px 0 40px;
+}
+
+.item {
+	list-style: none;
+	padding: 20px;
+	text-align: left;
+	font-size: 20px;
+	font-family: "DejaVu Sans", Arial, 'sans-serif';
+	background-color: #2692ff;
+	color: #ffffff;
+	border-radius: 4px;
+	/*margin-right: 10px;*/
+}
+
+.item:last-child {
+	/*margin-right: 0;*/
+}
+
+/* =====================================================================
+	Flexbox Styles
+   ==================================================================	*/
+/*
+	1. define the flexbox container
+		- display: flex (block level takes up all space)
+		- display: inline-flex (inline elm, takes up as much space as contents)
+	 	- every direct child becomes a flexbox item
+	 	- elms expand to fill height of container
+	
+	2. justify-content distributes the space available after padding/margin taken into account
+	
+	3. flex-direction
+	
+	4. flex-wrap
+	
+	// Flex Item properties
+	1. order - defalut value of 0, apply +/- int values
+			 - item with neg value appears before 0/+ items
+			 - item with pos value appear after
+	2. flex-grow - cause flex items to take up the space of the entire line
+
+ */
+
+#container {
+	display: flex;
+	/*height: 200px;*/
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
+.item {
+	margin-top: 10px;
+	flex-grow: 1;
+}
+
+
+/* have item 5 appear 2nd in the list*/
+/*.item {*/
+	/*order: 3;*/
+/*}*/
+
+/*.item-1 {*/
+	/*order: 1;*/
+/*}*/
+
+/*.item-5 {*/
+	/*order: 2;*/
+/*}*/
+
+
+/* OR */
+.item-5 {
+	order: -1;
+}
+
+.item-1 {
+	order: -2;
+}
+
+
+
