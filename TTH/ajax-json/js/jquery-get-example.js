@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+$(document).ready(function () {
 	
 	var url = '/employees.php';
 	
@@ -20,7 +20,10 @@ document.addEventListener('DOMContentLoaded', function () {
 		// do something
 	};
 	
-	// you could write it like so:
+	// you could write it like so, includes chaining of fail method:
+	// fail() method does not work with jquery.load()
+	// fail() does not work whne making requests to other sites,
+	// eg images from flickr or tweets from Twitter which your're displaying on your page
 	$('/employees.php',
 		{
 			name: 'Tom Jones',
@@ -29,6 +32,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		function(response){
 			// do something
 		}
-	);
+	).fail(function (jqXHR) {
+		// jquery XHR obj contains info about the error
+		console.log(jqXHR.status);
+		// print out error message to user
+		$('#errorDiv').html('<p>Sorry!' + jqXHR.statusText + ' error.</p>p>');
+	});
 	
 });
