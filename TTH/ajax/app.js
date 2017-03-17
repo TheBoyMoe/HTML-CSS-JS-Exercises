@@ -14,14 +14,14 @@ document.addEventListener('DOMContentLoaded', function () {
 	xhr.onreadystatechange = function () {
 		// we're only interested in the final state change, ready state == 4
 		// and everything is correct
-		if(xhr.readyState === 4) {
+		if(xhr.readyState === 4) { // 0-4 (4 means the server has sent back the complete response)
 			if(xhr.status === 200) {
 				document.getElementById('ajax').innerHTML = xhr.responseText;
 			}
-			// else if(xhr.readyState === 404) {
+			// else if(xhr.status === 404) {
 			// 	// file not found
 			//
-			// } else if(xhr.readyState === 500) {
+			// } else if(xhr.status === 500) {
 			// 	// server error
 			//
 			// }
