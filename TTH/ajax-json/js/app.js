@@ -28,4 +28,30 @@ document.addEventListener('DOMContentLoaded', function () {
 	xhr.open('GET', 'data/employees.json');
 	xhr.send();
 	
+	// fetch room data and build list
+	var roomXhr = new XMLHttpRequest();
+	roomXhr.onreadystatechange = function(){
+		if(roomXhr.readyState === 4 && roomXhr.status === 200){
+			// parse json string into array of json objects
+			var rooms = JSON.parse(roomXhr.responseText);
+			
+			// build the list
+			var list = '<ul class="rooms">';
+			rooms.forEach(function(room){
+				if(room.available) {
+					list += '<li class="empty">';
+				} else {
+					list += '<li class="full">';
+				}
+				list += room.room + '</li>';
+			});
+			list += '</ul>';
+			
+			// insert the list into the DOM elm
+			document.getElementById('roomList').innerHTML = list;
+		}
+	};
+	roomXhr.open('GET', '../data/rooms.json');
+	roomXhr.send();
+	
 });
