@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
 	console.log('Loaded page content');
 	
+	let load = document.getElementById('load');
+	
 	/* Build an XHR/ajax request */
 	
 	// 1. create the request obj
@@ -19,7 +21,11 @@ document.addEventListener('DOMContentLoaded', function () {
 	// 3. open the request, passing the http method and url (file or service)
 	xhr.open('GET', 'paragraph.html');
 	
-	// 4. send the request - when submitting info, eg form data, pass it to send()
-	xhr.send();
+	// execute ajax call via button click
+	load.addEventListener('click', function () {
+		// 4. send the request - when submitting info, eg form data, pass it to send()
+		xhr.send();
+		load.style.display = 'none';
+	});
 	
 });
