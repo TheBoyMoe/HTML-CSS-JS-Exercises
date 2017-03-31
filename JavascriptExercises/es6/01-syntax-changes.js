@@ -82,7 +82,36 @@ let employee = {
 	lastname: 'Thumb',
 	getName: ()=>{
 		// return `${this.firstname} ${this.lastname}`; // returns undefined
+		console.log(this); // window obj
 		return `${employee.firstname} ${employee.lastname}`; // returns name
 	}
 };
+
+
+/* ES6 method definitions */
+let staff = {
+	firstname: 'Peter',
+	lastname: 'Jones',
+	job: 'Developer',
+	getName() {
+		//"use strict";
+		console.log(this); // obj
+		return `${this.firstname} ${this.lastname}`; // returns name
+	},
+	getDescription() {
+		"use strict";
+		console.log(this); //obj
+		return `${this.firstname} ${this.lastname} is a ${this.job}`;
+	},
+	fn() {
+		"use strict";
+		console.log('outside',this); // obj
+		return ()=> {
+			console.log('inside', this); // obj
+			return `${this.firstname} ${this.lastname} is a ${this.job}`;
+		}
+	}
+	
+};
+
 
