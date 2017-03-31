@@ -73,7 +73,12 @@ let person = {
 	firstname: 'Tom',
 	lastname: 'Thumb',
 	getName: function () {
-		return `${this.firstname} ${this.lastname}`; // returns name
+		console.log('outside', this); // obj
+		return ()=> {
+			"use strict";
+			console.log('inside', this); // obj
+			return `${this.firstname} ${this.lastname}`; // returns name
+		}
 	}
 };
 
@@ -115,3 +120,19 @@ let staff = {
 };
 
 
+/* using string method and dynamic property names on objects */
+
+let ageField = 'age';
+
+let dynPerson = {
+	firstname: 'Tom',
+	lastname: 'Jones',
+	[ageField]: 28, // property name is set to the value of the variable
+	'hello everyone'() {
+		"use strict";
+		return `Hello everyone, my name is ${this.firstname} ${this.lastname}`;
+	}
+};
+console.log(dynPerson.age);
+console.log(dynPerson[ageField]);
+console.log(dynPerson['hello everyone']());
