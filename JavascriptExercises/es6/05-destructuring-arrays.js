@@ -2,15 +2,8 @@
 	Destructuring arrays
 
  */
- 
-// {} when destructuring an object
 
 let numbers = [1,2,3,4,5,6,7,8];
-let props = {
-	firstname: 'Tom',
-	lastname: 'Jones',
-	age: 34
-};
 
 // destructuring an array - original array remains unchanged
 // use [] on lhs when destructuring an array
