@@ -1,4 +1,5 @@
-
+// Modules are always in Strict Mode (no need to define "use strict")
+// Modules don't have a shared, global Scope. Instead each Module has its own Scope
 
 // export let keyValue = 1000;
 
