@@ -7,6 +7,9 @@
 	*/
 
 // variables defined with let/const are NOT hoisted
+// you can create let/const variables with the same name as long as they are in a different scope (function/block)
+// variables defined using let/const created in outer scopes are visible to nested scopes, just like var defined variables.
+
 let btnFn = function() {
 	console.log(this); // btn obj
 };
