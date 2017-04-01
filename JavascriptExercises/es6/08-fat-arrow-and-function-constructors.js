@@ -15,9 +15,9 @@ let Person = function (data) {
 		 // return this // undefined
 		 return Object.keys(this);
 	};
-	// fat arrow will bind's 'this' of it's parent scope, ie, the Person object
-	// it uses the 'this' of where it's defined and NOT of the context it is called
-	// you can this call it out of scope - and will still work
+	// fat arrow will bind 'this' of it's parent scope, ie, the Person object
+	// it uses the 'this' of where it's defined and NOT of the context it is called in.
+	// you can use this feature to call it out of scope - and will still work
 	this.getKeys2 = ()=>{
 		return Object.keys(this); // refers to the Person instance whether or not the method is called against the object
 	}
