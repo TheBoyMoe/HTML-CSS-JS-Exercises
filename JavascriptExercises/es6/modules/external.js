@@ -11,7 +11,7 @@ let keyValue = 1000;
 
 const fn = (a,b)=>{
 	return a*b;
-}
+};
 
 let text = 'some default text';
 
