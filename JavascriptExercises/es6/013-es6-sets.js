@@ -31,7 +31,7 @@ classroom.delete(anna);
 (classroom.has(anna))? console.log('value found'): console.log('not found');
 
 
-// ES6 adds the from() method to the Array objext, enabling the creation of an array from an existing set
+// ES6 adds the from() method to the Array object, enabling the creation of an array from an existing set/map
 let arr = Array.from(classroom);
 console.log(arr);
 
