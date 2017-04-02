@@ -112,3 +112,13 @@ class Dog extends Animal {
 // you have to instantiate an instance of that class
 let dog = new Dog('Max', 'dog', '24kg', 6);
 
+// Like many other languages, you can use the static keyword to enable
+// calling methods without having to instantiate an instance of the class first.
+// You can also export classes using the export keyword
+//  - import them into other files (import by name, eg Helper) with the import keyword just like any other import
+// 		using the classes name
+export class Helper {
+	static log() {
+		console.log(`example of using the static keyword`);
+	}
+}
