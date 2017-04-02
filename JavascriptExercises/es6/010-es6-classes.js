@@ -114,11 +114,54 @@ let dog = new Dog('Max', 'dog', '24kg', 6);
 
 // Like many other languages, you can use the static keyword to enable
 // calling methods without having to instantiate an instance of the class first.
-// You can also export classes using the export keyword
+// You can also export classes using the export keyword (in front of the class name)
 //  - import them into other files (import by name, eg Helper) with the import keyword just like any other import
 // 		using the classes name
-export class Helper {
+class Helper {
 	static log() {
 		console.log(`example of using the static keyword`);
 	}
 }
+
+
+
+/* ES6 classes and getters and setters
+ 	- make a classes props private
+  */
+
+class Vehicle {
+	// when defining getters and setters, you can't use the same prop name
+	// for the name of the method, thus props are prefixed with the underscore
+	constructor(model, make) {
+		this._model = model;
+		this._make = make;
+	}
+	
+	
+	// underscore to indicate that the prop is private,
+	// the property is NOT actually private if you prepend it's name with the underscore
+	// using getters/setters allows you to control data retrieving and setting values
+	get model() { // retrieve value via car.model
+		return this._model.toLowerCase();
+	}
+	
+	// get make() { // retrieve value via car.make
+	// 	return this._make;
+	// }
+	
+	
+	set model(value) { // set value via car.model
+		if(value.length > 2)
+			this._model = value;
+		else
+			console.log(`not valid entry,  try again`);
+	}
+}
+
+let car = new Vehicle('Vantage', 'Aston Martin');
+console.log(car.model); // 'vantage'
+console.log(car.make); // undefined - no getter - accessible via car._make
+car.model = 'DB7';
+car.make = 'Fiat';
+console.log(car.model); // 'db7'
+console.log(car.make); // creates a new make property on the car obj, _make is unchanged
