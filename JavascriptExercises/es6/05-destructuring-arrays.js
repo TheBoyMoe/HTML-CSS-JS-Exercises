@@ -1,6 +1,6 @@
 /*
 	Destructuring arrays
-
+	- allows you to extract values from arrays (or objects) and assign them to variables
  */
 
 let numbers = [1,2,3,4,5,6,7,8];

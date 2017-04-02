@@ -19,17 +19,51 @@ let props = {
 // you MUST use the same property names
 // - simply pull out the value by it's property name - since we're referencing properties by name
 // unlike arrays where we reference values by position
-var {firstname, lastname} = props;
+let {firstname, lastname} = props;
 console.log(firstname, lastname); // Tom Jones
 
-var {first, last, age} = props;
+let {first, last, age} = props;
 console.log(first, last, age); // undefined undefined 34
 
 // HOWEVER, you can rename property names by using aliases, e.g
-var {firstname: first, lastname: last} = props;
+let {firstname: first, lastname: last} = props;
 console.log(`aliasing ${first} ${last}`);
 
 // you can ignore properties, but unlike array destructuring don't leave 'gaps'
 let {greet} = props;
 console.log(greet()); // this - window object - returns undefined for first/lastname
 console.log(props.greet()); // this - obj - WORKS
+
+// using destructuring and default values
+function getData({ url, method = 'post' } = {}, callback) {
+	callback(url, method);
+}
+
+// getData({ url: 'myposturl.com' }, function (url, method) {
+// 	console.log(url, method);
+// });
+//
+// getData({ url: 'myputurl.com', method: 'put' }, function (url, method) {
+// 	console.log(url, method);
+// });
+
+getData({ url: 'myposturl.com' }, fn);
+
+getData({ url: 'myputurl.com', method: 'put' }, fn);
+
+const fn = (url, method)=>{
+	console.log(url, method);
+};
+
+// using destructuring to extract the value of a nested objects property
+
+let parentObject = {
+	title: 'Super Important',
+	childObject: {
+		title: 'Equally Important'
+	}
+};
+
+let { title, childObject: { title: childTitle } } = parentObject;
+
+console.log(childTitle);
