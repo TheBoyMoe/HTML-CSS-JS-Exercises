@@ -127,6 +127,8 @@ class Helper {
 
 /* ES6 classes and getters and setters
  	- make a classes props private
+ 	- check an example of es5 constructor functions and prototypal inheritence
+ 			- oojs/05-constructor-functions-and-inheritance.js
   */
 
 class Vehicle {
