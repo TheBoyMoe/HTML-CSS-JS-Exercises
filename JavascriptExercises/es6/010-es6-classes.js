@@ -70,7 +70,7 @@ let person = {
 class Animal {
 	// give the object properties using the reserved constructor keyword (otherwise not req'd)
 	constructor(type, weight = 'unknown', age = 'unknown'){
-		this.species = 'animal';
+		this.species = 'mammal';
 		this.type = type;
 		this.weight = weight;
 		this.age = age;
@@ -78,18 +78,37 @@ class Animal {
 	
 	// define functions
 	getType() {
-		console.log(this);
-		return `Animal of type ${this.type}, weighing ${this.weight}`; // obj instance
+		// console.log(this); // obj instance
+		return `I am a ${this.type}, weighing ${this.weight}`; // obj instance
 	}
 }
 
 Animal.prototype.getDescription = function () {
-	console.log(this); // obj instance
-	return `Animal of type ${this.type}, weighing ${this.weight}`;
+	//console.log(this); // obj instance
+	return `I am a ${this.age} year old ${this.type}`;
 };
 
 Animal.prototype.getFn = ()=>{
 	console.log(this); // window obj
 };
 
-let dog = new Animal('dog', '24kg');
+let cat = new Animal('cat', '4kg', 12);
+
+
+/* ES6 Classes and inheritence - inherits all the properties and methods of the parent, which can be overridden if necessary */
+
+class Dog extends Animal {
+	constructor(name, type, weight, age) {
+		super(type, weight, age); // call the parents constructor passing to set the appropriate props
+		this.name = name;
+	}
+	// override parent methods, and call them too!
+	getType() {
+		return `My name is ${this.name}, ${super.getType()}`;
+	}
+}
+
+// you can't call methods on the class directly, e.g Dog.getType(),
+// you have to instantiate an instance of that class
+let dog = new Dog('Max', 'dog', '24kg', 6);
+
