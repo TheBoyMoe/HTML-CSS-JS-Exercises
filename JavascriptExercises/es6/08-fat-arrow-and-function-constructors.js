@@ -12,8 +12,7 @@ let Person = function (data) {
 			this[key] = data[key];
 	}
 	this.getKeys = function () {
-		 // return this // undefined
-		 return Object.keys(this);
+		 return Object.keys(this); // refers to the person instance
 	};
 	// fat arrow will bind 'this' of it's parent scope, ie, the Person object
 	// it uses the 'this' of where it's defined and NOT of the context it is called in.
@@ -26,15 +25,16 @@ let Person = function (data) {
 
 let Alena = new Person({ name: 'Alena', role: 'Teacher' });
 console.log('Alena\'s Keys:', Alena.getKeys()); // 'this' refers to 'Alena'
-
-
-let getKeys = Alena.getKeys;
+let getKeys = Alena.getKeys; // 'this' is undefined since the method is called out of scope
 
 // 'this' is undefined in strict mode, returns type error .
 // Refers to the window object in sloppy mode - returns all keys in the window object
-// console.log(getKeys());
+// console.log(getKeys()); // returns TypeError
+
+console.log('---------------------------------------');
 
 let getKeys2 = Alena.getKeys2;
+console.log(`called in-scope`, Alena.getKeys2());
 console.log('re-assign obj method', getKeys2());
 
 
