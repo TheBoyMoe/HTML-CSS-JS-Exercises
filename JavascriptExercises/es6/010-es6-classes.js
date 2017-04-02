@@ -63,3 +63,33 @@ let person = {
 	}
 };
 
+
+
+/* ES6 Classes */
+
+class Animal {
+	// give the object properties using the reserved constructor keyword (otherwise not req'd)
+	constructor(type, weight = 'unknown', age = 'unknown'){
+		this.species = 'animal';
+		this.type = type;
+		this.weight = weight;
+		this.age = age;
+	}
+	
+	// define functions
+	getType() {
+		console.log(this);
+		return `Animal of type ${this.type}, weighing ${this.weight}`; // obj instance
+	}
+}
+
+Animal.prototype.getDescription = function () {
+	console.log(this); // obj instance
+	return `Animal of type ${this.type}, weighing ${this.weight}`;
+};
+
+Animal.prototype.getFn = ()=>{
+	console.log(this); // window obj
+};
+
+let dog = new Animal('dog', '24kg');
