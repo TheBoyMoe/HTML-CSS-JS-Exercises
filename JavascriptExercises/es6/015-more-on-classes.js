@@ -35,6 +35,7 @@ console.log(Array.from(sarah.grades)); // convert map into array
 // Extending classes
 
 // JS classes are not hoisted, define the class before any code that uses the class
+// code in the constructor block is executed when the new keyword is used
 class Person {
 	constructor({ name, age, eyeColor = 'brown' } = {}) {
 		this.name = name;
