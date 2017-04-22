@@ -27,37 +27,51 @@
  5. save the name of the movie to results.txt
  
  References
- [1] https://www.omdbapi.com/
- 
+ [1] https://www.omdbapi.com/ (docs and examples)
+ [2] https://github.com/flatiron/prompt (prompt module docs)
  
  */
 'use strict';
 const fs = require('fs');
 const path = require('path');
 const request = require('request');
+const prompt = require('prompt');
 
 const baseUrl = 'http://www.omdbapi.com/?';
 const plot = '&plot=full';
 
 // enter movie title within quotes, last element in 3 element array
-const encodedTitle = encodeURIComponent(process.argv[2]);
 
-const url = `${baseUrl}t=${encodedTitle}${plot}`;
+// prompt user for movie title
+console.log('Enter the title of your favourite movie:');
+prompt.start();
+prompt.get(['title'], (err, result)=>{
+	if(err) return console.error('Input failed');
+	// console.log('Movie title:', result.title);
+	
+	const encodedTitle = encodeURIComponent(result.title);
+	const url = `${baseUrl}t=${encodedTitle}${plot}`;
 
-// make the api request
-request(url, (err, res, body)=>{
-	if(!err && res.statusCode === 200) {
-		let movie = JSON.parse(body);
-		
-		const result = {
-			title: movie.Title,
-			year: movie.Year,
-			actors: movie.Actors,
-			plot: movie.Plot
-		};
-		let jsonString = JSON.stringify(result);
-		fs.writeFileSync(path.join(__dirname, 'results.txt'), jsonString);
-	}
-	else
-		console.err('unable to fetch movie data', err.message);
+	// make the api request
+	request(url, (err, res, body)=>{
+		if(!err && res.statusCode === 200) {
+			let movie = JSON.parse(body);
+			if(movie.Response === 'False'){
+				console.log('Movie not found');
+			} else {
+				const result = {
+					title: movie.Title,
+					year: movie.Year,
+					actors: movie.Actors,
+					plot: movie.Plot
+				};
+				let jsonString = JSON.stringify(result);
+				fs.writeFileSync(path.join(__dirname, 'results.txt'), jsonString);
+				console.log(movie.Title);
+			}
+		}
+		else
+			console.err('unable to fetch movie data', err.message);
+	});
 });
+
