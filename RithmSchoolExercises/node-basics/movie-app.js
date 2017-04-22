@@ -45,3 +45,9 @@ const encodedTitle = encodeURIComponent(process.argv[2]);
 const url = `${baseUrl}t=${encodedTitle}${plot}`;
 
 // make the api request
+request(url, (err, res, body)=>{
+	if(!err && res.statusCode === 200)
+		console.log(JSON.parse(body, undefined, 2));
+	else
+		console.err('unable to fetch movie data', err.message);
+});
