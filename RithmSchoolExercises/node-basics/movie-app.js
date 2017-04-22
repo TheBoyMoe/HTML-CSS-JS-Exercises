@@ -46,8 +46,18 @@ const url = `${baseUrl}t=${encodedTitle}${plot}`;
 
 // make the api request
 request(url, (err, res, body)=>{
-	if(!err && res.statusCode === 200)
-		console.log(JSON.parse(body, undefined, 2));
+	if(!err && res.statusCode === 200) {
+		let movie = JSON.parse(body);
+		
+		const result = {
+			title: movie.Title,
+			year: movie.Year,
+			actors: movie.Actors,
+			plot: movie.Plot
+		};
+		let jsonString = JSON.stringify(result);
+		fs.writeFileSync(path.join(__dirname, 'results.txt'), jsonString);
+	}
 	else
 		console.err('unable to fetch movie data', err.message);
 });
