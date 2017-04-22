@@ -14,6 +14,9 @@ const colors = ['red', 'green', 'blue'];
 // define templating engine
 app.set('view engine', 'pug');
 
+// serve up static assets(img/css/js)
+app.use(express.static(`${__dirname}/public`));
+
 // GET '/'
 app.get('/', (req, res)=>{
 	// res.send('Received your request, now bog off!');
