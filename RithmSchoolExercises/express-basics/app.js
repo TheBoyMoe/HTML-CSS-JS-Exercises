@@ -7,10 +7,24 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
+const colors = ['red', 'green', 'blue'];
+
+// define templating engine
+app.set('view engine', 'pug');
+
 // GET '/'
 app.get('/', (req, res)=>{
-	res.send('Received your request, now bog off!');
+	// res.send('Received your request, now bog off!');
+	const firstname = 'Elle';
+	res.render('index', {name: firstname});
 });
+
+app.get('/colors', (req, res)=>{
+	// {colors} is ES2015 object shorthand notation for {colors: colors}
+	// To evaluate variables inside of our templates, we will use the Jade #{variable} syntax.
+	res.render('colors', {colors});
+});
+
 
 // GET '/instructor/[firstname]
 // To specify that a part of a URL will be a "parameter", add the : character and give
