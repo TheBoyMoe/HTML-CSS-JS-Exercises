@@ -1,6 +1,8 @@
 /*
 	References:
 	[1] https://www.rithmschool.com/courses/node-express-fundamentals/introduction-to-express
+	[2] https://pugjs.org/api/getting-started.html
+	
  */
 'use strict';
 const express = require('express');
@@ -16,7 +18,7 @@ app.set('view engine', 'pug');
 app.get('/', (req, res)=>{
 	// res.send('Received your request, now bog off!');
 	const firstname = 'Elle';
-	res.render('index', {name: firstname});
+	res.render('hello', {name: firstname});
 });
 
 app.get('/colors', (req, res)=>{
