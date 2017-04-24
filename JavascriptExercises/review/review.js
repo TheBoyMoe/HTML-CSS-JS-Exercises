@@ -39,3 +39,7 @@ let numbers = [23,34,3,345,12,53,34,3,45,56,2,124,9];
 console.log(...numbers);
 console.log(Math.max(...numbers));
 console.log(Math.max.apply(null, numbers)); // same functionality in ES5 using apply() - can be called on any function
+
+// 4 For of loop (use for arrays, use For in to iterate through an object)
+for(let num of numbers)
+	console.log(num);
