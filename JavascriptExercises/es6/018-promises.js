@@ -90,6 +90,9 @@ const asyncAdd = (a, b)=>{
 	})
 };
 
+
+// Chaining promises where the result of one is used in the next, and so on.
+// 1st failure stops the sequence
 asyncAdd(2,3)
 .then((result)=>{
 	console.log('1st', result);
