@@ -77,3 +77,30 @@ Promise.race([promise1, promise3, promise2])
 	.catch((error)=>{
 		console.error(error);
 	});
+
+
+// More Chaining - From Udemy Complete Node Course - Weather App using promises
+const asyncAdd = (a, b)=>{
+	return new Promise((resolve, reject)=>{
+		setTimeout(()=>{
+			(typeof a === 'number' && typeof  b === 'number')?
+				resolve(a + b):
+				reject('One or both entries were not numbers');
+		}, 1000);
+	})
+};
+
+asyncAdd(2,3)
+.then((result)=>{
+	console.log('1st', result);
+	return asyncAdd(result, 'we');
+})
+.then((result)=>{
+	console.log('2nd', result);
+	return asyncAdd(result, 'erer');
+})
+.then((result)=>{
+	console.log('3rd', result);
+})
+.catch((err) => console.error(err));
+
