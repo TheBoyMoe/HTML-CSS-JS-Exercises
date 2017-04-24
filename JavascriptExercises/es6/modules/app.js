@@ -2,22 +2,22 @@
 
 // Write ES6 code here...
 
-// 1. import {keyValue} from './external.js'; (.js ext is only req'd for testing)
-// import {fn} from './external.js';
+// 1. import {keyValue} from './utils.js'; (.js ext is only req'd for testing)
+// import {fn} from './utils.js';
 
 // 2. combine imports
-// import {keyValue, fn} from './external.js';
+// import {keyValue, fn} from './utils.js';
 
 // 3. renaming imports using alias
-// import {keyValue as key, fn} from './external.js';
+// import {keyValue as key, fn} from './utils.js';
 
 
 // 4. import default export - you can call the default anything you want
 // - don't have to use the same export name since there can only be one default per file
-// import dummyText from './external.js';
+// import dummyText from './utils.js';
 
 // 5. you can import default, plus other imports in one line, e.g
-// import dummyText, {keyValue as key, } from './external.js';
+// import dummyText, {keyValue as key, } from './utils.js';
 
 // 6. You can also import all you're exports from a single file as an object
 import * as ext from './external.js'
