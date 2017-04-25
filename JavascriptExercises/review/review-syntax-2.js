@@ -17,3 +17,30 @@ console.log(Math.max(...numbers));
 
 
 // Destructure Arrays and objects
+
+// // destructuring in arrays depends on item position
+let [a = 5, ,b = 20, ...c] = numbers;
+console.log(a,b,c); // 1,3,[4,5]
+
+[b,a] = [a,b]; // swap values
+
+
+// destructuring objects is based on property name
+const person = {
+	firstname: 'John',
+	lastname: 'Jones',
+	age: 34,
+	greet(){
+		return `Hello my name is ${this.firstname} ${this.lastname} and I'm ${this.age} yrs old`;
+	},
+	hello(){
+		return 'Hello Everyone';
+	}
+};
+
+let {greet: description, hello: greeting} = person;
+console.log(person.greet()); // works
+// console.log(person.description()); // TypeError - description not a function
+// greet(); // Reference Error - due to alias
+// description(); // TypeError - 'this' is undefined
+console.log(greeting()); // works
