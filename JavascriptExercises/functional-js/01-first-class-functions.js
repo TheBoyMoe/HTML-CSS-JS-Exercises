@@ -62,3 +62,18 @@ const notDogs = animals.filter(notDog);
 console.log(dogs);
 console.log(cats);
 console.log(notDogs);
+
+
+// 2. using Array.prototype.map()
+
+let names = [];
+for(let animal of animals){
+	names.push(animal.name);
+}
+
+const names2 = animals.map((animal)=>{
+	return animal.name;
+});
+
+console.log(names);
+console.log(names2);
