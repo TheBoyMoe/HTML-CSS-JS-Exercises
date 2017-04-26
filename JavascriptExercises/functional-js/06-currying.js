@@ -1,3 +1,13 @@
+/*
+	References
+ [1] https://www.youtube.com/watch?v=iZLP4qOwY8I&list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84&index=6
+ [2] https://www.sitepoint.com/currying-in-functional-javascript/
+ [3] http://blog.carbonfive.com/2015/01/14/gettin-freaky-functional-wcurried-javascript/
+ [4]http://2ality.com/2011/09/currying-vs-part-eval.html
+ 
+ 
+ */
+
 "use strict";
 const _ = require('lodash');
 
