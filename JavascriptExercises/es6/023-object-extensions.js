@@ -71,3 +71,15 @@ console.log(person.__proto__ === employee); // true
 console.log(person); // {name : 'John Smith}
 
 
+// 3. Math Object
+
+// Math.sign() returns the sign of a number, e.g
+console.log(Math.sign(10)); // -1
+console.log(Math.sign(-10)); // 1
+
+// Math.trunk() - truncates a number, e.g
+// - with positive numbers floor() and trunc() are the same
+console.log(Math.trunc(0.78)); // 0
+console.log(Math.trunc(3.67)); // 3
+console.log(Math.trunc(-3.67)); // -3
+console.log(Math.floor(-3.67)); // -4
