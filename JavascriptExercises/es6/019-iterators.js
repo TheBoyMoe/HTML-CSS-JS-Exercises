@@ -10,7 +10,8 @@ const numbers = [1,2,3,4];
 
 console.log(typeof numbers[Symbol.iterator]); // return function object
 
-// create a custom iterator
+// override the default iterator with a custom iterator
+// numbers[Symbol.iterator] returns a function - use that feature to provide a custom iterable function
 numbers[Symbol.iterator] = function() {
 	let nextValue = 10;
 	return {
@@ -33,3 +34,28 @@ console.log(it.next());
 console.log(it.next());
 console.log(it.next());
 
+
+// iterating over an object's properties - pick which property you want to iterate over
+const person = {
+	firstname: 'Peter',
+	lastname: 'Jones',
+	languages: ['js', 'python', 'php', 'java', 'c++'],
+	age: 67,
+	[Symbol.iterator]: function () {
+		let i  = 0;
+		let langs = this.languages;
+		return {
+			next: function () {
+				let value = langs[i];
+				i++;
+				return {
+					done: (i > langs.length),
+					value: value
+				}
+			}
+		}
+	}
+};
+
+for(let skill of person)
+	console.log(skill)
