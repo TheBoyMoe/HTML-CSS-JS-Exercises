@@ -83,3 +83,14 @@ console.log(Math.trunc(0.78)); // 0
 console.log(Math.trunc(3.67)); // 3
 console.log(Math.trunc(-3.67)); // -3
 console.log(Math.floor(-3.67)); // -4
+
+// 4. String Methods
+
+// startsWith(), endsWith() & includes() return a boolean, e.g
+// - methods are case sensitive
+let str = 'abcdefghijkl';
+console.log(str.startsWith('abc')); // true
+console.log(str.startsWith('bc')); // false
+console.log(str.endsWith('jkl')); // true
+console.log(str.endsWith('JKL')); // false
+console.log(str.includes('def')); // true
