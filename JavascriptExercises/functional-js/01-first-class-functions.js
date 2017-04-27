@@ -77,3 +77,7 @@ const names2 = animals.map((animal)=>{
 
 console.log(names);
 console.log(names2);
+
+
+// 3. using Array.prototype.reduce()
+
