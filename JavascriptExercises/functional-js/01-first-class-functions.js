@@ -80,4 +80,21 @@ console.log(names2);
 
 
 // 3. using Array.prototype.reduce()
+const orders = [
+	{amount: 250},
+	{amount: 450},
+	{amount: 350},
+	{amount: 150}
+];
 
+let sum = 0;
+for(let order of orders)
+	sum += order.amount;
+
+console.log('for loop %d', sum);
+
+let result = orders.reduce((reducedSum, order)=>{
+	return reducedSum + order.amount;
+}, 0);
+
+console.log('reduce %d', result);
