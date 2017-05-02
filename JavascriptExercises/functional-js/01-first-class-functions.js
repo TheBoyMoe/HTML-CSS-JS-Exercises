@@ -1,5 +1,7 @@
 /* Returning functions from functions */
 "use strict";
+const fs = require('fs');
+
 function interviewQuestion(job) {
 	if(job === 'designer') {
 		return function (name) {
@@ -98,3 +100,14 @@ let result = orders.reduce((reducedSum, order)=>{
 }, 0);
 
 console.log('reduce %d', result);
+
+// more reduce example
+
+// read the contents of the data.txt file, passing the character encoding ensures that a string is returned
+const output = fs.readFileSync('data.txt', 'utf-8')
+	.trim() // remove any spaces at start or end
+    .split('\n') // split at line break
+    .map((line) => line.replace('\r', '')) // remove carriage return at end of string
+	.map((line) => line.split('\t')); // convert each string into an array of strings, splitting at '\t'
+console.log(output);
+

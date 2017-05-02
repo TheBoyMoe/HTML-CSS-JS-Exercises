@@ -22,3 +22,25 @@ console.log('app.js successfully loaded');
 import * as utils from './utils.js'
 
 console.log(utils.sum(2,3), utils.minus(3,1), utils.value);
+
+
+/*
+
+// EXPORT
+export a
+export b
+
+export {a,b,c}
+
+
+// IMPORT
+import {a,b,c} from './path/to/file/js'
+a()
+b()
+
+import {a as d, b,c} from './path/to/file.js'
+
+import * as utils from './path/to/file.js'
+utils.a()
+utils.b()
+ */
