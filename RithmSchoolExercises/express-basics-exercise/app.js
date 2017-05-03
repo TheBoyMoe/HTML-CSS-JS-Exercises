@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const items = ['apples', 'pears', 'oranges', 'lemons', 'blueberries'];
+let items = ['apples', 'pears', 'oranges', 'lemons', 'blueberries'];
 
 app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/public'));
@@ -32,6 +32,24 @@ app.post('/add-item', (req, res)=>{
     // get the new item, add to list and display
     let item = req.body.newItem;
     items.push(item);
+    res.redirect('/');
+});
+
+// GET /remove-item
+app.get('/remove-item', (req, res)=>{
+    res.render('remove-item');
+});
+
+
+// POST /delete-item
+app.post('/delete-item', (req, res)=>{
+    // delete item from the list
+    let item = req.body.removeItem;
+    if(item && items.includes(item)){
+        items = items.filter((value)=>{
+            return value !== item;
+        });
+    }
     res.redirect('/');
 });
 
