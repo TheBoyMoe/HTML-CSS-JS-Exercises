@@ -21,6 +21,7 @@ app.get('/search', (req, res)=>{
     res.send(req.query);
 });
 
+/* ADD ITEM */
 // GET /new-item - display a form allowing users to submit new items
 app.get('/new-item', (req, res)=>{
     res.render('new-item');
@@ -35,6 +36,8 @@ app.post('/add-item', (req, res)=>{
     res.redirect('/');
 });
 
+
+/* REMOVE ITEM */
 // GET /remove-item
 app.get('/remove-item', (req, res)=>{
     res.render('remove-item');
@@ -50,6 +53,19 @@ app.post('/delete-item', (req, res)=>{
             return value !== item;
         });
     }
+    res.redirect('/');
+});
+
+
+/* REMOVE ALL */
+// GET /remove-all
+app.get('/remove-all', (req, res)=>{
+    res.render('remove-all');
+});
+
+// POST /delete-all
+app.post('/delete-all', (req, res)=>{
+    items = [];
     res.redirect('/');
 });
 
