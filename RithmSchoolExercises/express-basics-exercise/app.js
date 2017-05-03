@@ -21,10 +21,13 @@ app.get('/search', (req, res)=>{
     res.send(req.query);
 });
 
-// GET /new-item
+// GET /new-item - display a form allowing users to submit new items
+app.get('/new-item', (req, res)=>{
+    res.render('new-item');
+});
 
 
-// POST /add-item
+// POST /add-item - add new items to the shopping list
 
 
 app.listen(port, ()=>{
