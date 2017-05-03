@@ -69,6 +69,27 @@ app.post('/delete-all', (req, res)=>{
     res.redirect('/');
 });
 
+
+/* UPDATE ITEM */
+// GET /update-item
+app.get('/update-item', (req, res)=>{
+    res.render('update-item');
+});
+
+// POST /updated-list
+app.post('/updated-list', (req, res)=>{
+    let oldItem = req.body.oldItem;
+    let newItem = req.body.newItem;
+    if(oldItem && items.includes(oldItem)){
+        items.forEach((value, i, items)=>{
+            if(value === oldItem)
+                items[i] = newItem;
+        })
+    }
+    res.redirect('/');
+});
+
+
 app.listen(port, ()=>{
     console.log(`Express is listening on port ${port}`);
 });
