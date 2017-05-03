@@ -2,7 +2,8 @@ extends index
 
 block content
 
-	form(action="/register")
+	//form(action="/register") // for GET request, data retrieved from query object
+	form(action="/register" method="POST")
 		.form-group
 			label(for="firstname") First name:
 			input(id="firstname" type="text" name="firstname" placeholder="Enter your first name")

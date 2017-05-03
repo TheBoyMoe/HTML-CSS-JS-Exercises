@@ -17,11 +17,16 @@
 	    - each of the input fields MUST have a name attribute - it is the value of this property that will be the key in the query object
 	    - the value will be whatever the user enters
 	    - to examine the data submitted - req.query.firstname => returns the value entered in the field with a name of 'firstname'
+	    - YOU MUST INSTALL BODY-PARSER in order to retrieve form data from POST requests from request.body
  */
 'use strict';
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
+
+// use body-parser to 'package' form submitted data via POST into the body object, add to the request object
+app.use(bodyParser.urlencoded({extended: true}));
 
 const colors = ['red', 'green', 'blue'];
 
@@ -63,6 +68,7 @@ app.get('/signup', (req, res)=>{
 // GET /register - capture form entered user data
 // redirect the entered data tht /register route when submitting form via GET request
 // form data is added to the query object on request - on form element ensure the action="/register"
+// you can see the key/value pairs in the address bar appended to the url as a query
 app.get('/register', (req, res)=>{
     res.send(req.query);
 });
@@ -70,9 +76,10 @@ app.get('/register', (req, res)=>{
 // to capture form data when a POST request is made, we retrieve the values from the body object of the request
 // we need to install the body-parser package to do that - adds the body object, containing the form data, to the request obj
 // POST /signup - submitted form data
-// app.post('/signup', (req, res)=>{
-//     res.send(`You entered, name: ${req.query.firstname} ${req.query.lastname}, email ${req.query.email}`);
-// });
+app.post('/register', (req, res)=>{
+    res.send(req.body);
+    // res.send(`You entered, name: ${req.body.firstname} ${req.body.lastname}, email ${req.body.email}`);
+});
 
 
 app.listen(port, ()=>{
