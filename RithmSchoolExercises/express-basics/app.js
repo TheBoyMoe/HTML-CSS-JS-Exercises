@@ -13,6 +13,10 @@
 	2. to evaluate variables inside of the pug templates, injects the variables using #{variable_name} syntax
 	3. express defaults to using the 'views' dir in the root of the project to serve up template files
 	    - otherwise you can use: app.set('views', './path/to/views')
+	4. to collect form data
+	    - each of the input fields MUST have a name attribute - it is the value of this property that will be the key in the query object
+	    - the value will be whatever the user enters
+	    - to examine the data submitted - req.query.firstname => returns the value entered in the field with a name of 'firstname'
  */
 'use strict';
 const express = require('express');
@@ -56,6 +60,19 @@ app.get('/signup', (req, res)=>{
     res.render('signup');
 });
 
+// GET /register - capture form entered user data
+// redirect the entered data tht /register route when submitting form via GET request
+// form data is added to the query object on request - on form element ensure the action="/register"
+app.get('/register', (req, res)=>{
+    res.send(req.query);
+});
+
+// to capture form data when a POST request is made, we retrieve the values from the body object of the request
+// we need to install the body-parser package to do that - adds the body object, containing the form data, to the request obj
+// POST /signup - submitted form data
+// app.post('/signup', (req, res)=>{
+//     res.send(`You entered, name: ${req.query.firstname} ${req.query.lastname}, email ${req.query.email}`);
+// });
 
 
 app.listen(port, ()=>{
