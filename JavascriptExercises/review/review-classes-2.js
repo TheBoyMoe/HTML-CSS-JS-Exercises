@@ -86,3 +86,38 @@ class Chimpanzee extends Animal {
 
 let chimp = new Chimpanzee('Cheeta', 'Chimpanzee', '65lbs', '46cm', 'black');
 console.log(chimp.info());
+
+// Classes, static methods and exporting
+export class Utils {
+    static add(a,b) {
+        return a + b;
+    }
+    
+    static subtract(a,b) {
+        return a - b;
+    }
+    
+    multiply(a,b) {
+        return a*b;
+    }
+}
+
+// add() and subtract() are only available on the class, NOT on an instance
+console.log(Utils.add(2,3));
+console.log(Utils.subtract(3,1));
+
+// multiply is only available on an instance of the object
+let multiply = new Utils().multiply(2,3);
+console.log(multiply);
+
+class ImageTools {
+    static compress() {
+        console.log('compressed image to save space');
+    }
+    
+    static greyscale() {
+        console.log('converted the image to black and white');
+    }
+}
+
+export {ImageTools}

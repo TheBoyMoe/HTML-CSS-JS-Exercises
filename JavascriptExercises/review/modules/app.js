@@ -44,3 +44,13 @@ import * as utils from './path/to/file.js'
 utils.a()
 utils.b()
  */
+
+// import classes
+import {Utils, ImageTools} from './../review-classes-2.js';
+
+// only the static methods are visible
+console.log(Utils.add(4,2));
+console.log(Utils.subtract(4,2));
+
+ImageTools.compress();
+ImageTools.greyscale();
