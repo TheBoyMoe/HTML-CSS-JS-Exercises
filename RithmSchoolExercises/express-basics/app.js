@@ -77,8 +77,11 @@ app.get('/register', (req, res)=>{
 // we need to install the body-parser package to do that - adds the body object, containing the form data, to the request obj
 // POST /signup - submitted form data
 app.post('/register', (req, res)=>{
-    res.send(req.body);
+    // res.send(req.body);
     // res.send(`You entered, name: ${req.body.firstname} ${req.body.lastname}, email ${req.body.email}`);
+    
+    // do something with the data .....
+    res.redirect('/'); // redirect the user
 });
 
 
