@@ -28,7 +28,12 @@ app.get('/new-item', (req, res)=>{
 
 
 // POST /add-item - add new items to the shopping list
-
+app.post('/add-item', (req, res)=>{
+    // get the new item, add to list and display
+    let item = req.body.newItem;
+    items.push(item);
+    res.redirect('/');
+});
 
 app.listen(port, ()=>{
     console.log(`Express is listening on port ${port}`);
