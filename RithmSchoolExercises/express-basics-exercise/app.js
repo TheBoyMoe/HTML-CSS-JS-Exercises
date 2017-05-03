@@ -16,8 +16,10 @@ app.get('/', (req, res)=>{
     res.render('list', {items});
 });
 
-// GET /search
-
+// GET /search - handle form search submissions
+app.get('/search', (req, res)=>{
+    res.send(req.query);
+});
 
 // GET /new-item
 
