@@ -1,0 +1,9 @@
+extends base
+
+block content
+	h1 Shopping List!
+	a(href="/items/new") make a new one!
+	ul
+		each item in items
+			li #{item.name} &nbsp;
+				a(href=`/items/${item.id}/edit`) Edit
