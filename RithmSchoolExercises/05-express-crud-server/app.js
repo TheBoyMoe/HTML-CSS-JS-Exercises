@@ -26,6 +26,7 @@
     [1] https://expressjs.com/en/guide/error-handling.html
     [2] https://www.joyent.com/node-js/production/design/errors
     [3] https://derickbailey.com/2014/09/06/proper-error-handling-in-expressjs-route-handlers/
+    [4] https://expressjs.com/en/starter/generator.html (express-generator app)
     
  */
 
@@ -33,6 +34,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const morgan = require('morgan');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -46,7 +48,7 @@ let id = 1;
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
-
+app.use(morgan('tiny'));
 
 /* ------------ routes ------------------------- */
 app.get('/', (req, res, next)=>{
