@@ -36,9 +36,73 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 
+
+let users = [];
+let id = 1;
+
 // routes
-app.get('/', (req, res)=>{
-    res.send('It\'s working');
+app.get('/', (req, res, next)=>{
+    res.redirect('/users');
+});
+
+app.get('/users', (req, res, next)=>{
+    res.render('index', {users: users});
+});
+
+app.get('/users/new', (req, res, next)=>{
+    // render a page called new.pug inside the views folder. In this file there will be
+    // a form that when submitted will POST to /users
+    res.render('new');
+});
+
+app.get('/users/:id', (req, res, next)=>{
+    // find a user by their id using the find method on arrays. We also have to make sure
+    // that we convert req.params.id into a number from a string so we can safely compare
+    let user = users.find((user)=>{
+        return user.id === Number(req.params.id);
+    });
+    res.render('edit', {user: user});
+});
+
+app.get('/users/:id/edit', (req, res, next)=>{
+    // find a user by their id using the find method on arrays. We also have to
+    // make sure that we convert req.params.id into a number from a string so we can safely compare
+    let user = users.find((user)=>{
+        return user.id === Number(req.params.id);
+    });
+    res.render('edit', {user: user});
+});
+
+app.post('/users', (req, res, next)=>{
+    // create a new user and add them to the users array - in production you'd be adding them to a database
+    users.push({
+        name: req.body.name,
+        id: id
+    });
+    // increment the id for the next user to be added
+    id++;
+    res.redirect('/users');
+});
+
+// this route will be requested when a form updating a user is submitted
+app.patch('/users/:id', (req, res, next)=>{
+    // find the user
+    let user = users.find((user)=>{
+        return user.id === Number(req.params.id);
+    });
+    // update their name with the data from the form
+    user.name = req.body.name;
+    res.redirect('/users');
+});
+
+// this route will be requested when a form for deleting a user is submitted
+app.delete('/users/:id', (req, res, next)=>{
+    // find the user in the array and remove them
+    let userIndex = users.findIndex((user)=>{
+        return user.id === Number(req.params.id);
+    });
+    users.splice(userIndex, 1);
+    res.redirect('/users');
 });
 
 
