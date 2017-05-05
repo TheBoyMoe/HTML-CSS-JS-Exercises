@@ -27,6 +27,7 @@
     [2] https://www.joyent.com/node-js/production/design/errors
     [3] https://derickbailey.com/2014/09/06/proper-error-handling-in-expressjs-route-handlers/
     [4] https://expressjs.com/en/starter/generator.html (express-generator app)
+    [5] https://github.com/expressjs/morgan (express terminal logger)
     
  */
 
@@ -46,6 +47,7 @@ let id = 1;
 
 /* ------------ middleware -------------------- */
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(morgan('tiny'));
@@ -71,7 +73,7 @@ app.get('/users/:id', (req, res, next)=>{
     let user = users.find((user)=>{
         return user.id === Number(req.params.id);
     });
-    res.render('edit', {user: user});
+    res.render('show', {user: user});
 });
 
 app.get('/users/:id/edit', (req, res, next)=>{
