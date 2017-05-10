@@ -22,6 +22,13 @@ router.get('/new', (req, res, next)=>{
     res.render('new');
 });
 
+
+// GET /items/search - display a search form allowing users to search for items in the list
+router.get('/search', (req, res, next)=>{
+    res.render('search');
+});
+
+
 // GET /items/:id - display a shopping list item
 router.get('/:id', (req, res, next)=>{
     // retrieve the item with the matching id, and display
@@ -36,6 +43,7 @@ router.get('/:id', (req, res, next)=>{
         next(err);
     }
 });
+
 
 // GET /items/:id/edit - display a form allowing list item to be changed
 router.get('/:id/edit', (req, res, next)=>{
@@ -63,6 +71,21 @@ router.post('/', (req, res, next)=>{
 });
 
 
+// POST /items/:name - display the result of the search
+router.post('/:name/search', (req, res, next)=>{
+    let item = items.find((item)=>{
+        return item.name === req.body.name;
+    });
+    if(item){
+        res.render('show', {item: item});
+    } else {
+        let err = new Error('Not found');
+        err.status = 404;
+        next(err);
+    }
+});
+
+
 // PATCH /items/:id - save the updated item to the array
 router.patch('/:id', (req, res, next)=>{
     let item = items.find((item)=>{
@@ -83,7 +106,7 @@ router.delete('/:id', (req, res, next)=>{
     let itemIndex = items.findIndex((item)=>{
         return item.id === Number(req.params.id);
     });
-    if(itemIndex) {
+    if(itemIndex> -1) {
         items.splice(itemIndex, 1);
         res.redirect('/items');
     } else {

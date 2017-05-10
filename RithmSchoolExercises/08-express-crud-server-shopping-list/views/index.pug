@@ -2,7 +2,9 @@ extends base
 
 block content
 	h1 Shopping List!
-	a(href="/items/new") make a new one!
+	a(href="/items/new") Add an item to the list!
+	br
+	a(href="/items/search") Search the list
 	ul
 		each item in items
 			li #{item.name} &nbsp;

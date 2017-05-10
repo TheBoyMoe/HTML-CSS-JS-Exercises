@@ -19,10 +19,10 @@ app.use(morgan('tiny'));
 /* routes */
 const itemRoutes = require('./routes/items');
 // all routes starting '/items' are forwarded to itemRoutes
-app.use('/items', itemRoutes);
 app.get('/', (req, res)=>{
     res.redirect('/items');
 });
+app.use('/items', itemRoutes);
 
 /* error handling */
 // catch 404 errors and forward to error handler
