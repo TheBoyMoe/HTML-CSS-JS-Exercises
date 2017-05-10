@@ -9,6 +9,12 @@ let id = 1;
 
 /* item routes */
 
+// GET /items/all - delete all items
+router.get('/all', (req, res, next)=>{
+    items = [];
+    res.redirect('/items');
+});
+
 // GET /users - display all items
 router.get('/', (req, res, next)=>{
     // render the index.pug template passing it the items array to be displayed
