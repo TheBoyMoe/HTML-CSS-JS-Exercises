@@ -33,3 +33,33 @@ import * as ext from './external.js'
 console.log(ext);
 console.log(`${ext.keyValue} ${ext.default}`); // default is given the property name 'default'
 console.log(ext.fn(2,3));
+
+
+
+/*
+    Exporting:
+    
+    export let keyValue = 4;
+    export const fn = (a,b) => a*b;
+    
+    OR
+    
+    let keyValue = 4;
+    const fn = (a,b) => a*b;
+    
+    export = {
+        keyValue,
+        fn
+    }
+    
+    ////////////////
+
+    import {keyValue, fn} from './utils.js'
+
+    OR
+    
+    import * as ext from './utils'
+    
+    then - ext.keyValue and ext.fn() to use
+
+ */
