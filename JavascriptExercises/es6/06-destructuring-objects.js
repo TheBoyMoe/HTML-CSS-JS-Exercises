@@ -26,13 +26,25 @@ let {first, last, age} = props;
 console.log(first, last, age); // undefined undefined 34
 
 // HOWEVER, you can rename property names by using aliases, e.g
-let {firstname: first, lastname: last} = props;
-console.log(`aliasing ${first} ${last}`);
+let {firstname: fx, lastname: lx} = props;
+console.log(`aliasing ${fx} ${lx}`);
 
 // you can ignore properties, but unlike array destructuring don't leave 'gaps'
 let {greet} = props;
 console.log(greet()); // this - window object - returns undefined for first/lastname
 console.log(props.greet()); // this - obj - WORKS
+
+
+// using destructuring and creating alias values
+let person = {
+    fname: 'Terry',
+    lname: 'Jones',
+    info(){
+        return `My name is ${this.fname} ${this.lname}`;
+    }
+};
+let {fname: f, lname: l} = person;
+console.log('f l', f,l);
 
 // using destructuring and default values
 function getData({ url, method = 'post' } = {}, callback) {
@@ -47,13 +59,15 @@ function getData({ url, method = 'post' } = {}, callback) {
 // 	console.log(url, method);
 // });
 
+const fn = (url, method)=>{
+    console.log(url, method);
+};
+
+
 getData({ url: 'myposturl.com' }, fn);
 
 getData({ url: 'myputurl.com', method: 'put' }, fn);
 
-const fn = (url, method)=>{
-	console.log(url, method);
-};
 
 // using destructuring to extract the value of a nested objects property
 
