@@ -60,3 +60,40 @@ waitASecond(6)
     .then(waitASecond)
     .then((result) => console.log(result))
     .catch((err) => console.error('Error caught:',err.message));
+
+
+// 3. Using Promise.all() & race() methods
+const promiseResolve = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+        resolve('Promise resolved!');
+    }, 1000)
+});
+
+const promiseRejected = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+        reject('Promise rejected!');
+    }, 2000)
+});
+
+// takes an array of promises and executes them one after the other
+// only if all the promises are resulved is a success returned,
+// any rejections terminates the sequence
+Promise.all([promiseResolve, promiseResolve, promiseRejected, promiseResolve])
+    .then((success) => console.log(success), (err) => console.error(err));
+
+const promiseResolve1 = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+        resolve('Promise 1 resolved!');
+    }, 2000)
+});
+
+const promiseResolve2 = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+        resolve('Promise 2 resolved!');
+    }, 1000)
+});
+
+// waits for the first promise to finish
+Promise.race([promiseResolve1, promiseResolve2, promiseRejected, promiseResolve1])
+    .then((success) => console.log(success))
+    .catch((err) => console.error(err));
