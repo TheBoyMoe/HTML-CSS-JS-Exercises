@@ -80,3 +80,13 @@ promise.catch((err) => {
 })
 ```
 
+Promises can be chained together, you can save a reference to any point in the promise chain and add more promises to it - then() and catch() return a new promise every time.
+
+
+```javascript
+let p1 = fetch('foo'); // returns a brancd new promise p1
+let p2 = p1.then(res => res.a.prop.that.does.not.exist); // when p1 is fulfilled, p.then() is executed returning a new promise p2
+let p3 = p2.catch(err => {});  // when p2 is fulfilled, ps.catch() is executed, returning a new promise p3
+let p4 = p3.catch(err => console.error(err.message));  // when p3 is fulfilled, p3.catch() is executed returning p4
+```
+
