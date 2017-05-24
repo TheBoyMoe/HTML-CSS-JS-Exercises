@@ -1,0 +1,17 @@
+{
+  "name": "es6-in-depth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "es-6-promises.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hget": "^3.1.0",
+    "marked": "^0.3.6",
+    "marked-terminal": "^2.0.0",
+    "request": "^2.81.0"
+  }
+}

@@ -90,3 +90,6 @@ let p3 = p2.catch(err => {});  // when p2 is fulfilled, ps.catch() is executed, 
 let p4 = p3.catch(err => console.error(err.message));  // when p3 is fulfilled, p3.catch() is executed returning p4
 ```
 
+
+### Creating Promises
+You can create promises using the Promise constructor, new Promise(), and the Promise.resolve() and Promise.reject() methods.
